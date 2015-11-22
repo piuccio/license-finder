@@ -1,0 +1,20 @@
+<table>
+	<thead>
+		<tr>
+			<th>Repo</th>
+			<th>License</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for repo in repositories %}
+			<tr class="{% if repo.hasLicense %}hasLicense{% else %}noLicense{% endif %}">
+				<td>{{ repo.repo }}</td>
+				<td>
+					{% for license in repo.licenses %}
+						<p><span class="licenseName">{{ license.name }}</span> in <span class="licenseFile">{{ license.file }}</span></p>
+					{% endfor %}
+				</td>
+			</tr>
+		{% endfor %}
+	</tbody>
+</table>

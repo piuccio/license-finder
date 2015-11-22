@@ -1,0 +1,51 @@
+<div class="col vertical third">
+	<div class="card">
+		<div class="cardTitle">Licenses</div>
+		<div class="cardDescription">
+			<table>
+				<tbody>
+					{% for row in statistics.licenses %}
+						<tr>
+							<td>{{ row.name }}</td>
+							<td>{{ row.repos.length }}</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+<div class="col vertical third">
+	<div class="card">
+		<div class="cardTitle">Files</div>
+		<div class="cardDescription">
+			<table>
+				<tbody>
+					{% for row in statistics.files %}
+						<tr>
+							<td>{{ row.name }}</td>
+							<td>{{ row.repos.length }}</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+<div class="col vertical third">
+	<div class="card">
+		<div class="cardTitle">Multiple License</div>
+		<div class="cardDescription">
+			<table>
+				<tbody>
+					{% for row in statistics.mixed %}
+						<tr>
+							<td>{{ row.repo }}</td>
+							<td>{{ row.licenses | join(", ") }}</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

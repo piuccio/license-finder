@@ -1,0 +1,45 @@
+<div class="col vertical {% if statistics.hasEmptyRepos %}half{% else %}full{% endif %}">
+	<div class="card">
+		<div class="cardTitle">Summary</div>
+		<div class="cardDescription">
+			<p>Out of {{ statistics.count }} public repositories from {{ user }}:</p>
+			<p><span class="percentageWithLicense">{{ (statistics.withLicense / statistics.count * 100) | round | int }}%</span> have a license, {{ statistics.withLicense }} in total.</p>
+			<div class="nestedParagraph">
+				<p>{{ (statistics.licenses[0].repos.length / statistics.count * 100) | round | int }}% use <span class="licenseName">{{ statistics.licenses[0].name }}</span></p>
+				<p class="{% if statistics.licenses[1].repos.length / statistics.count < 0.1 %}smallPercentage{% endif %}">
+					{{ (statistics.licenses[1].repos.length / statistics.count * 100) | round | int }}% use <span class="licenseName">{{ statistics.licenses[1].name }}</span>
+				</p>
+				<p class="{% if statistics.licenses[2].repos.length / statistics.count < 0.1 %}smallPercentage{% endif %}">
+					{{ (statistics.licenses[2].repos.length / statistics.count * 100) | round | int }}% use <span class="licenseName">{{ statistics.licenses[2].name }}</span>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+{% if statistics.hasEmptyRepos %}
+<div class="col vertical half">
+	<div class="card">
+		<div class="cardTitle">Empty repositories</div>
+		<div class="cardDescription">
+			<table>
+				<thead>
+					<tr>
+						<th></th>
+						<th>Created</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for repo in repositories %}
+						{% if repo.empty %}
+							<tr>
+								<td>{{ repo.repo }}</td>
+								<td>{{ repo.created }}</td>
+							</tr>
+						{% endif %}
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+{% endif %}

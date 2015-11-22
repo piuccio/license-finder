@@ -1,0 +1,16 @@
+{
+  "name": "license-finder",
+  "version": "1.0.0",
+  "description": "Analyze license information of public repositories",
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^3.0.5",
+    "dotenv": "^1.2.0",
+    "got": "^5.1.0",
+    "mkdirp": "^0.5.1",
+    "nunjucks": "^2.1.0"
+  },
+  "scripts": {
+    "watch": "nodemon -e js,css,html --ignore report.html index.js"
+  }
+}
